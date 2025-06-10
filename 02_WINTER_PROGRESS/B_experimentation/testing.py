@@ -49,10 +49,10 @@ def test_multiclass(model, test_loader, save_path, n_classes, scenario):
             jac_scores = jaccard_index(output, target, task='multiclass', num_classes=n_classes, average="none").tolist()
             assert len(f1_scores) == len(precision_scores) == len(recall_scores) == len(jac_scores) == n_classes, "ERROR: f1_scores and jac_scores must have length n_classes"
             for class_idx in range(n_classes):
-                metrics_history[f"Class {class_idx} F1 Score"][class_idx].append(f1_scores[class_idx])
-                metrics_history[f"Class {class_idx} Precision"][class_idx].append(precision_scores[class_idx])
-                metrics_history[f"Class {class_idx} Recall"][class_idx].append(recall_scores[class_idx])
-                metrics_history[f"Class {class_idx} Jaccard Index"][class_idx].append(jac_scores[class_idx])
+                metrics_history[f"Class {class_idx} F1 Score"].append(f1_scores[class_idx])
+                metrics_history[f"Class {class_idx} Precision"].append(precision_scores[class_idx])
+                metrics_history[f"Class {class_idx} Recall"].append(recall_scores[class_idx])
+                metrics_history[f"Class {class_idx} Jaccard Index"].append(jac_scores[class_idx])
 
             # save segmentation masks
             seg_mask_path = os.path.join(outputs_path, "output_{}_{}.png".format(day_num.item(), hour_num[0]))
