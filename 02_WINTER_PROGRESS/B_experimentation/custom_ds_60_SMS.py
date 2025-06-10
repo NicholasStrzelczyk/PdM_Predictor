@@ -24,10 +24,10 @@ class Custom_DS_60_SMS(Dataset):
         # read list file and assign private variables
         for dir_count, main_dir in enumerate([main_dir_1, main_dir_2, main_dir_3]):
             for line in open(os.path.join(main_dir, list_name), "r"):
+                x, y = fix_path(line).split(",")
                 day = int(x.split("_")[1])
                 if day == 21:
                     break
-                x, y = fix_path(line).split(",")
                 self.x.append(os.path.join(main_dir, x.strip()))
                 self.y.append(os.path.join(main_dir, y.strip()))
                 self.day.append(day + (dir_count * 20))
