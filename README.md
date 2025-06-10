@@ -52,18 +52,15 @@ NEW IDEA:
 
 
 
-
-
-
-
-
 # -------- ICML Notes -------- #
 - Compare VD (Vignette-Dilation) and RET (Root-Expansion-Tiling) approaches using candlstick graph.
 - Generally need to clean up all ICML related code...
 
 
 
-
+# -------- June 10th New Idea -------- #
+- During tile matrix creation, give the algorithm a set of all taken tiles and get a random seed point from that set. 
+- This will allow for more branching patterns as opposed to oval-shaped fouling.
 
 
 
