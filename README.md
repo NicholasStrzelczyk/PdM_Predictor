@@ -58,15 +58,9 @@ NEW IDEA:
 
 
 # -------- ICML Notes -------- #
-
-Experiment 1:
 - Compare VD (Vignette-Dilation) and RET (Root-Expansion-Tiling) approaches using candlstick graph.
-- Ensure full confusion matrix is tracked for testing binary models.
-    -> Ensure this works for any plots and CSV files that get saved
-
-
-- Problem: SMS datasets only consider a single hour on day 20, 40 and 60! Please fix!
 - Generally need to clean up all ICML related code...
+
 
 
 

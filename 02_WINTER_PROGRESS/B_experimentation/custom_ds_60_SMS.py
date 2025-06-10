@@ -8,7 +8,7 @@ from torch.utils.data import Dataset
 from utils import get_dataset_path, fix_path
 
 
-class Custom_DS_60_TEST(Dataset):
+class Custom_DS_60_SMS(Dataset):
     def __init__(self, ds_folder_name: str, binary_targets: bool):
         # initialize private variables
         self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
@@ -24,14 +24,14 @@ class Custom_DS_60_TEST(Dataset):
         # read list file and assign private variables
         for dir_count, main_dir in enumerate([main_dir_1, main_dir_2, main_dir_3]):
             for line in open(os.path.join(main_dir, list_name), "r"):
+                day = int(x.split("_")[1])
+                if day == 21:
+                    break
                 x, y = fix_path(line).split(",")
                 self.x.append(os.path.join(main_dir, x.strip()))
                 self.y.append(os.path.join(main_dir, y.strip()))
-                day = int(x.split("_")[1])
                 self.day.append(day + (dir_count * 20))
                 self.hour.append(str(x.split("_")[2].split(".")[0]))
-                if day == 20:
-                    break
     
     def __len__(self):
         return len(self.x)

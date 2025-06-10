@@ -10,7 +10,7 @@ from tqdm import tqdm
 from utils import *
 from image_processing import preprocess_target, postprocess_seg_mask
 from custom_ds_60 import Custom_DS_60
-from custom_ds_60_TEST import Custom_DS_60_TEST
+from custom_ds_60_SMS import Custom_DS_60_SMS
 
 # ---------- Helper Methods ---------- #
 
@@ -93,6 +93,7 @@ if __name__ == "__main__":
     parser.add_argument("-rois", type=str, required=True, help="use rois (y/n)")
     # parser.add_argument("-binary", type=str, required=True, help="use binary targets (y/n)")
     parser.add_argument("-dataset", type=str, required=True, help="dataset folder name (str)")
+    parser.add_argument("-scenario", type=str, required=True, help="dataset scenario type (str)")
     parser.add_argument("-trial", type=int, required=True, help="trial number (int)")
     args = parser.parse_args()
 
@@ -104,15 +105,10 @@ if __name__ == "__main__":
     # binary_targets = args.binary.lower() == "y"
     binary_targets = True
     dataset_name = args.dataset.lower()
+    scenario = args.scenario.upper()
+    assert scenario in ['SMS', 'CGS'], "ERROR: scenario must be either SMS or CGS"
     trial = args.trial
     classes = 2 if binary_targets else 7
-
-    # make extra testing folder for SMS and CGS
-    scenario = ''
-    if dataset_name == 'mar28_ds4': # for SMS Testing
-        scenario = 'SMS'
-    elif dataset_name == 'mar28_ds5': # for CGS Testing
-        scenario = 'CGS'
 
     # set up save path
     results_folder_name = f"{model_name}_{'rois' if use_rois else 'full'}_{'binary' if binary_targets else 'multiclass'}"
@@ -123,12 +119,10 @@ if __name__ == "__main__":
     log_and_print(f"\n--- Testing {results_folder_name} ---\n")
 
     # set up data loaders
-    if dataset_name == 'mar28_ds4': # for SMS Testing
-        test_ds = Custom_DS_60_TEST(dataset_name, binary_targets)
-    elif dataset_name == 'mar28_ds5': # for CGS Testing
-        test_ds = Custom_DS_60(dataset_name, 'test', binary_targets)
+    if scenario == 'SMS': 
+        test_ds = Custom_DS_60_SMS(dataset_name, binary_targets) # for SMS Testing
     else:
-        test_ds = Custom_DS_60(dataset_name, 'test', binary_targets)
+        test_ds = Custom_DS_60(dataset_name, 'test', binary_targets) # for CGS Testing
     test_ds_loader = DataLoader(test_ds, batch_size=1, shuffle=False)
 
     # set up model and load weights
