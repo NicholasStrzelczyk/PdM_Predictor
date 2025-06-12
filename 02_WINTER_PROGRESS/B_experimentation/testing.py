@@ -172,7 +172,7 @@ if __name__ == "__main__":
 
      # set up logger
     setup_basic_logger(save_location, f'testing_{scenario}')
-    log_and_print(f"\n--- Testing {results_folder_name} ---\n")
+    log_and_print(f"\n--- Testing {results_folder_name} | {scenario} | trial {trial} ---\n")
 
     # set up data loaders
     if scenario == 'SMS': 
