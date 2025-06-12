@@ -15,11 +15,11 @@ unet,rois,binary,2,1:15:30.965398
 unet,rois,multiclass,2,1:08:54.027912
 unet,full,binary,2,0:41:50.677595
 unet,full,multiclass,2,1:17:12.390250
-cgnet,rois,binary,3,0:14:26.253267
+cgnet,rois,binary,3,N/A
 cgnet,rois,multiclass,3,0:31:30.910150
 cgnet,full,binary,3,0:10:37.434535
 cgnet,full,multiclass,3,0:22:02.029945
-unet,rois,binary,3,2:18:43.903605
+unet,rois,binary,3,N/A
 unet,rois,multiclass,3,1:39:30.721687
 unet,full,binary,3,2:11:49.521329
 unet,full,multiclass,3,2:28:00.614765

@@ -62,10 +62,7 @@ def calculate_training_time_other(log_file_path):
 
     except FileNotFoundError:
         print(f"Error: The file '{log_file_path}' was not found.")
-        return f"Error: The file '{log_file_path}' was not found."
-    # except Exception as e:
-    #     print(f"An error occurred: {e}")        
-    #     return f"An error occurred: {e}"       
+        return f"Error: The file '{log_file_path}' was not found."  
 
 
 
@@ -95,8 +92,8 @@ def create_training_time_csv(path_to_results, save_folder):
 
 if __name__ == "__main__":
     # Hyperparameters
-    path_to_results = '/Users/nick_1/PycharmProjects/UWO Masters/ICML_Jun7_Backup'
-    save_folder = '/Users/nick_1/PycharmProjects/UWO Masters/PdM_Predictor/02_WINTER_PROGRESS/C_plotting/generated_csvs'
+    path_to_results = '/Users/nick_1/PycharmProjects/UWO Masters/ICML_Jun12_Results'
+    save_folder = '/Users/nick_1/PycharmProjects/UWO Masters/PdM_Predictor/03_ICML_Results'
 
     # create csv file with training time
     create_training_time_csv(path_to_results, save_folder)
