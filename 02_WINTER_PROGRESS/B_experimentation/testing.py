@@ -24,7 +24,7 @@ def test_multiclass(model, test_loader, save_path, n_classes, scenario):
         "Class 0 Recall": [], "Class 1 Recall": [], "Class 2 Recall": [], "Class 3 Recall": [], "Class 4 Recall": [], "Class 5 Recall": [], "Class 6 Recall": [],
         "Class 0 Jaccard Index": [], "Class 1 Jaccard Index": [], "Class 2 Jaccard Index": [], "Class 3 Jaccard Index": [], "Class 4 Jaccard Index": [], "Class 5 Jaccard Index": [], "Class 6 Jaccard Index": [],
     }
-    outputs_path = os.path.join(save_path, 'outputs')
+    outputs_path = os.path.join(save_path, 'outputs', scenario)
     os.makedirs(outputs_path, exist_ok=True)
 
     model.to(device=torch.device('cuda:0' if torch.cuda.is_available() else 'cpu'))
@@ -92,7 +92,7 @@ def test_binary(model, test_loader, save_path, n_classes, scenario):
         "FN": [], 
         "TP": []
     }
-    outputs_path = os.path.join(save_path, 'outputs')
+    outputs_path = os.path.join(save_path, 'outputs', scenario)
     os.makedirs(outputs_path, exist_ok=True)
 
     model.to(device=torch.device('cuda:0' if torch.cuda.is_available() else 'cpu'))
